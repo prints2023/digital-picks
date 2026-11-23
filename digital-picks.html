@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Picks — Best Courses, Tools & Supplements</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        header h1 { font-size: 2.5rem; margin-bottom: 12px; }
+        header p { font-size: 1.15rem; opacity: 0.9; max-width: 520px; margin: 0 auto 24px; }
+        .header-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+        /* NAV */
+        nav {
+            background: white;
+            padding: 16px 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            margin: 0 16px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: #667eea; }
+        /* SECTIONS */
+        section { max-width: 1000px; margin: 0 auto; padding: 48px 20px; }
+        .section-title {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+        .section-subtitle {
+            color: #666;
+            margin-bottom: 32px;
+            font-size: 1rem;
+        }
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        .card-img {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .card-img.course { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+        .card-img.vitamin { background: linear-gradient(135deg, #d4fc79, #96e6a1); }
+        .card-img.template { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+        .card-img.software { background: linear-gradient(135deg, #a1c4fd, #c2e9fb); }
+        .card-body { padding: 20px; }
+        .card-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        .card-title { font-size: 1.1rem; margin-bottom: 8px; }
+        .card-desc { font-size: 0.9rem; color: #666; margin-bottom: 16px; }
+        .card-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+        }
+        .card-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+        .card-btn:hover { opacity: 0.85; }
+        /* COMPARE TABLE */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            margin-top: 24px;
+        }
+        .compare-table th, .compare-table td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+        .compare-table th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+        .compare-table tr:hover { background: #f9f9ff; }
+        .stars { color: #f5a623; }
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 24px;
+        }
+        .cta-section h2 { font-size: 1.8rem; margin-bottom: 12px; }
+        .cta-section p { opacity: 0.9; margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        .cta-btn:hover { transform: scale(1.05); }
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 32px 20px;
+            color: #999;
+            font-size: 0.8rem;
+        }
+        footer a { color: #667eea; text-decoration: none; }
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            nav a { margin: 0 8px; font-size: 0.85rem; }
+            .cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-badge">&#x1F52C; Honest Reviews & Curated Picks</div>
+    <h1>Digital Picks</h1>
+    <p>We test and compare the best online courses, productivity templates, software tools, and health supplements — so you don't have to.</p>
+</header>
+
+<!-- NAV -->
+<nav>
+    <a href="#courses">Courses</a>
+    <a href="#templates">Templates</a>
+    <a href="#vitamins">Vitamins</a>
+    <a href="#software">Software</a>
+    <a href="#compare">Compare</a>
+</nav>
+
+<!-- COURSES -->
+<section id="courses">
+    <h2 class="section-title">Top Online Courses</h2>
+    <p class="section-subtitle">Hand-picked courses with real results. We review what's inside before recommending it.</p>
+    <div class="cards">
+        <!-- CARD 1 — REPLACE HREF WITH YOUR AFFILIATE LINK -->
+        <div class="card">
+            <div class="card-img course">&#9729;</div>
+            <div class="card-body">
+                <span class="card-tag">Course</span>
+                <h3 class="card-title">Productivity Masterclass 2025</h3>
+                <p class="card-desc">Learn how to manage your time, build habits, and ship projects faster. 40+ hours of practical content.</p>
+                <div class="card-price">$49 / full access</div>
+                <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_HERE_1" target="_blank" rel="nofollow sponsored">View Details &#8594;</a>
+            </div>
+        </div>
+        <!-- CARD 2 -->
+        <div class="card">
+            <div class="card-img course">&#128218;</div>
+            <div class="card-body">
+                <span class="card-tag">Course</span>
+                <h3 class="card-title">Digital Marketing Blueprint</h3>
+                <p class="card-desc">From zero to first $1K online. SEO, email marketing, funnels — everything covered step by step.</p>
+                <div class="card-price">$39 / full access</div>
+                <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_HERE_2" target="_blank" rel="nofollow sponsored">View Details &#8594;</a>
+            </div>
+        </div>
+        <!-- CARD 3 -->
+        <div class="card">
+            <div class="card-img course">&#128640;</div>
+            <div class="card-body">
+                <span class="card-tag">Course</span>
+                <h3 class="card-title">AI for Business Automation</h3>
+                <p class="card-desc">Use AI tools to automate your business workflows. No coding required. Updated for 2025.</p>
+                <div class="card-price">$59 / full access</div>
+                <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_HERE_3" target="_blank" rel="nofollow sponsored">View Details &#8594;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEMPLATES -->
+<section id="templates">
+    <h2 class="section-title">Productivity Templates</h2>
+    <p class="section-subtitle">Ready-to-use Notion, Google Sheets and Canva templates that save hours of work.</p>
+    <div class="cards">
+        <div class="card">
+            <div class="card-img template">&#128196;</div>
+            <div class="card-body">
+                <span class="card-tag">Template</span>
+                <h3 class="card-title">Notion Life OS Dashboard</h3>
+                <p class="card-desc">All-in-one Notion dashboard for goals, tasks, habits and finance tracking. Fully customizable.</p>
+                <div class="card-price">$19 / one-time</div>
+                <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_HERE_4" target="_blank" rel="nofollow sponsored">Get Template &#8594;</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img template">&#128200;</div>
+            <div class="card-body">
+                <span class="card-tag">Template</span>
+                <h3 class="card-title">Content Calendar Pro Pack</h3>
+                <p class="card-desc">52-week content calendar for Instagram, YouTube and TikTok. Includes 200+ post ideas.</p>
+                <div class="card-price">$14 / one-time</div>
+                <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_HERE_5" target="_blank" rel="nofollow sponsored">Get Template &#8594;</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img template">&#9997;</div>
+            <div class="card-body">
+                <span class="card-tag">Template</span>
+                <h3 class="card-title">Freelancer Invoice Kit</h3>
+                <p class="card-desc">Professional invoice templates for Google Sheets and Excel. Get paid faster with clean design.</p>
+                <div class="card-price">$9 / one-time</div>
+                <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_HERE_6" target="_blank" rel="nofollow sponsored">Get Template &#8594;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VITAMINS -->
+<section id="vitamins">
+    <h2 class="section-title">Health & Supplements</h2>
+    <p class="section-subtitle">Evidence-based vitamin and supplement picks. We focus on bioavailability and value for money.</p>
+    <div class="cards">
+        <div class="card">
+            <div class="card-img vitamin">&#127811;</div>
+            <div class="card-body">
+                <span class="card-tag">Supplement</span>
+                <h3 class="card-title">Daily Multi-Vitamin Complex</h3>
+                <p class="card-desc">Complete multivitamin with 25+ essential nutrients. Third-party tested for purity and potency.</p>
+                <div class="card-price">$24 / 60 capsules</div>
+                <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_HERE_7" target="_blank" rel="nofollow sponsored">Check Price &#8594;</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img vitamin">&#9744;</div>
+            <div class="card-body">
+                <span class="card-tag">Supplement</span>
+                <h3 class="card-title">Vitamin D3 + K2 Drops</h3>
+                <p class="card-desc">High-absorption liquid vitamin D3 with K2 for bone and immune support. Perfect for winter months.</p>
+                <div class="card-price">$18 / 1 oz dropper</div>
+                <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_HERE_8" target="_blank" rel="nofollow sponsored">Check Price &#8594;</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img vitamin">&#127809;</div>
+            <div class="card-body">
+                <span class="card-tag">Supplement</span>
+                <h3 class="card-title">Omega-3 Fish Oil Premium</h3>
+                <p class="card-desc">Ultra-pure fish oil with high EPA/DHA. Molecularly distilled for heavy-metal free formula.</p>
+                <div class="card-price">$22 / 90 softgels</div>
+                <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_HERE_9" target="_blank" rel="nofollow sponsored">Check Price &#8594;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOFTWARE -->
+<section id="software">
+    <h2 class="section-title">Software & Tools</h2>
+    <p class="section-subtitle">The apps and tools we use daily to run our business efficiently.</p>
+    <div class="cards">
+        <div class="card">
+            <div class="card-img software">&#9881;</div>
+            <div class="card-body">
+                <span class="card-tag">Software</span>
+                <h3 class="card-title">Notion Workspace Upgrade</h3>
+                <p class="card-desc">Powerful all-in-one workspace for notes, databases, project management and collaboration.</p>
+                <div class="card-price">Free / $10/mo Plus</div>
+                <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_HERE_10" target="_blank" rel="nofollow sponsored">Start Free &#8594;</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img software">&#128172;</div>
+            <div class="card-body">
+                <span class="card-tag">Software</span>
+                <h3 class="card-title">ConvertKit Email Platform</h3>
+                <p class="card-desc">Email marketing built for creators. Beautiful landing pages, automations and audience analytics.</p>
+                <div class="card-price">Free up to 1,000 subs</div>
+                <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_HERE_11" target="_blank" rel="nofollow sponsored">Start Free &#8594;</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img software">&#127912;</div>
+            <div class="card-body">
+                <span class="card-tag">Software</span>
+                <h3 class="card-title">Canva Pro for Creators</h3>
+                <p class="card-desc">Design stunning graphics, social media posts and presentations in minutes with drag-and-drop.</p>
+                <div class="card-price">$13/mo Pro plan</div>
+                <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_HERE_12" target="_blank" rel="nofollow sponsored">Try Free &#8594;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section id="compare">
+    <h2 class="section-title">Quick Comparison</h2>
+    <p class="section-subtitle">See top picks side by side before making your decision.</p>
+    <table class="compare-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Rating</th>
+                <th>Price</th>
+                <th>Best For</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Productivity Masterclass</strong></td>
+                <td>Online Course</td>
+                <td><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9</td>
+                <td>$49</td>
+                <td>Time management</td>
+            </tr>
+            <tr>
+                <td><strong>Notion Life OS</strong></td>
+                <td>Template</td>
+                <td><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.8</td>
+                <td>$19</td>
+                <td>Organization</td>
+            </tr>
+            <tr>
+                <td><strong>Daily Multi-Vitamin</strong></td>
+                <td>Supplement</td>
+                <td><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> 4.6</td>
+                <td>$24</td>
+                <td>Daily health</td>
+            </tr>
+            <tr>
+                <td><strong>ConvertKit</strong></td>
+                <td>Software</td>
+                <td><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9</td>
+                <td>Free start</td>
+                <td>Email marketing</td>
+            </tr>
+            <tr>
+                <td><strong>Canva Pro</strong></td>
+                <td>Software</td>
+                <td><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> 4.7</td>
+                <td>$13/mo</td>
+                <td>Graphic design</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+    <h2>Join Our Telegram Channel</h2>
+    <p>Get weekly curated picks, exclusive deals and honest reviews delivered every Monday.</p>
+    <a class="cta-btn" href="https://t.me/YOUR_TELEGRAM_LINK" target="_blank">Subscribe on Telegram &#8594;</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2025 Digital Picks. All rights reserved.</p>
+    <p style="margin-top:8px;">Disclosure: Some links on this site are affiliate links. We may earn a commission at no extra cost to you. Read our <a href="#">Privacy Policy</a>.</p>
+</footer>
+
+</body>
+</html>
