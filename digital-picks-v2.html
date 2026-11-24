@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Найдёмка — Подборки лучших предложений</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0F172A;
+            --coral: #FF6B4A;
+            --coral-light: #FF8C61;
+            --bg: #F8FAFC;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            --white: #FFFFFF;
+            --card-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+            --card-hover-shadow: 0 12px 40px rgba(15, 23, 42, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(145deg, var(--navy) 0%, #1E293B 100%);
+            color: var(--white);
+            padding: 100px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 107, 74, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 140, 97, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 107, 74, 0.15);
+            border: 1px solid rgba(255, 107, 74, 0.3);
+            color: var(--coral-light);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: var(--coral);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin-bottom: 36px;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--coral);
+            background: rgba(255, 107, 74, 0.08);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-header {
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 600px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .card-img {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-img.edu {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-img.shop {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        /* Анимированные SVG иконки */
+        .icon-svg {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .icon-svg svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Анимации для education */
+        @keyframes bookOpen {
+            0%, 100% { transform: rotateY(0deg); }
+            50% { transform: rotateY(15deg); }
+        }
+
+        @keyframes chartGrow {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.1); }
+        }
+
+        .icon-edu-1 { animation: bookOpen 3s ease-in-out infinite; transform-origin: center; }
+        .icon-edu-2 { animation: chartGrow 2.5s ease-in-out infinite; transform-origin: bottom; }
+
+        /* Анимации для shopping */
+        @keyframes cartBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes ballBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(180deg); }
+        }
+
+        @keyframes bagPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .icon-shop-1 { animation: cartBounce 2s ease-in-out infinite; }
+        .icon-shop-2 { animation: pulse 2s ease-in-out infinite; }
+        .icon-shop-3 { animation: spin 4s linear infinite; transform-origin: center; }
+        .icon-shop-4 { animation: bagPulse 2.5s ease-in-out infinite; }
+
+        /* Hover эффект на карточках */
+        .card:hover .icon-svg {
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+            transition: filter 0.3s ease;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--coral);
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .card-tag::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 2px;
+            background: var(--coral);
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 1px solid rgba(15, 23, 42, 0.06);
+        }
+
+        .card-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .card-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--coral) 0%, var(--coral-light) 100%);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(255, 107, 74, 0.3);
+        }
+
+        .card-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 107, 74, 0.4);
+        }
+
+        .compare-wrapper {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .compare-table th,
+        .compare-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+            font-size: 0.95rem;
+        }
+
+        .compare-table th {
+            background: var(--navy);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .compare-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .compare-table tr:hover td {
+            background: rgba(255, 107, 74, 0.04);
+        }
+
+        .compare-table td strong {
+            color: var(--navy);
+        }
+
+        .stars {
+            color: #F59E0B;
+            letter-spacing: 2px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--navy) 0%, #1E293B 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 107, 74, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--coral) 0%, var(--coral-light) 100%);
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(255, 107, 74, 0.4);
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 32px rgba(255, 107, 74, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            background: var(--white);
+            border-top: 1px solid rgba(15, 23, 42, 0.06);
+        }
+
+        footer a {
+            color: var(--coral);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 50px;
+            }
+
+            nav ul {
+                gap: 4px;
+            }
+
+            nav a {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+
+            section {
+                padding: 50px 16px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .card-footer {
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
+
+            .card-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">&#x1F52C; Честные подборки лучших предложений</div>
+        <h1>Найдём<span>ка</span></h1>
+        <p>Сравниваем цены, проверяем условия и подбираем лучшие предложения на маркетплейсах, в онлайн-школах и магазинах.</p>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#edu">Онлайн-школы</a></li>
+        <li><a href="#market">Маркетплейсы</a></li>
+        <li><a href="#shops">Магазины</a></li>
+        <li><a href="#compare">Сравнение</a></li>
+    </ul>
+</nav>
+
+<section id="edu">
+    <div class="section-header">
+        <h2 class="section-title">Онлайн-школы и курсы</h2>
+        <p class="section-subtitle">Проверенные образовательные программы с отзывами студентов и выгодными условиями.</p>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <div class="card-img edu">
+                <div class="icon-svg icon-edu-1">
+                    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Книга -->
+                        <path d="M15 20C15 20 25 15 40 20C55 25 65 20 65 20V60C65 60 55 55 40 60C25 65 15 60 15 60V20Z" fill="white" opacity="0.9"/>
+                        <path d="M40 20V60" stroke="#667eea" stroke-width="2"/>
+                        <path d="M20 25C20 25 30 30 40 25" stroke="rgba(102,126,234,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M40 25V55" stroke="#667eea" stroke-width="1.5"/>
+                        <path d="M20 35C20 35 30 40 40 35" stroke="rgba(102,126,234,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M40 35V45" stroke="#667eea" stroke-width="1.5"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="card-tag">Образование</span>
+                <h3 class="card-title">Фоксфорд</h3>
+                <p class="card-desc">Онлайн-школа №1 в России. Подготовка к ЕГЭ, ОГЭ, олимпиадам. Увлекательные уроки от топовых преподавателей по всем школьным предметам.</p>
+                <div class="card-footer">
+                    <span class="card-price">от бесплатного урока</span>
+                    <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_FOXFORD" target="_blank" rel="nofollow sponsored">Подробнее →</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img edu">
+                <div class="icon-svg icon-edu-2">
+                    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- График роста -->
+                        <rect x="10" y="50" width="12" height="20" rx="2" fill="white" opacity="0.7"/>
+                        <rect x="28" y="35" width="12" height="35" rx="2" fill="white" opacity="0.85"/>
+                        <rect x="46" y="20" width="12" height="50" rx="2" fill="white"/>
+                        <rect x="64" y="10" width="8" height="60" rx="2" fill="white" opacity="0.9"/>
+                        <path d="M16 45L34 30L52 25L68 15" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="card-tag">Курсы</span>
+                <h3 class="card-title">Нетология</h3>
+                <p class="card-desc">Профессии в IT и digital: маркетинг, дизайн, разработка, аналитика. Практические проекты в портфолио, помощь с трудоустройством.</p>
+                <div class="card-footer">
+                    <span class="card-price">от 2 990 ₽/мес</span>
+                    <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_NETOLOGY" target="_blank" rel="nofollow sponsored">Подробнее →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="market">
+    <div class="section-header">
+        <h2 class="section-title">Маркетплейсы</h2>
+        <p class="section-subtitle">Лучшие скидки, кэшбэк и условия доставки на крупных площадках.</p>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <div class="card-img shop">
+                <div class="icon-svg icon-shop-1">
+                    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Корзина -->
+                        <path d="M10 25H20L28 55H55L62 25H18" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="30" cy="65" r="4" fill="white"/>
+                        <circle cx="50" cy="65" r="4" fill="white"/>
+                        <path d="M35 25V15C35 12 38 10 40 10C42 10 45 12 45 15V25" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="card-tag">Маркетплейс</span>
+                <h3 class="card-title">AliExpress Россия</h3>
+                <p class="card-desc">Миллионы товаров напрямую от производителей Китая. Быстрая доставка по РФ, гарантия возврата денег, регулярные распродажи и купоны.</p>
+                <div class="card-footer">
+                    <span class="card-price">тысячи скидок каждый день</span>
+                    <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_ALIEXPRESS" target="_blank" rel="nofollow sponsored">Смотреть товары →</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img shop">
+                <div class="icon-svg icon-shop-2">
+                    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Лупа -->
+                        <circle cx="35" cy="35" r="18" stroke="white" stroke-width="3" fill="none"/>
+                        <path d="M48 48L60 60" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M28 35C28 29 32 24 38 24C44 24 48 29 48 35" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="card-tag">Для бизнеса</span>
+                <h3 class="card-title">Яндекс Бизнес</h3>
+                <p class="card-desc">Продвижение вашего бизнеса в Яндексе: карта компании, отзывы, реклама. Бесплатная регистрация точки на картах — первые клиенты уже ждут.</p>
+                <div class="card-footer">
+                    <span class="card-price">первые 14 дней бесплатно</span>
+                    <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_YANDEX_BIZ" target="_blank" rel="nofollow sponsored">Попробовать →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="shops">
+    <div class="section-header">
+        <h2 class="section-title">Магазины и доставка</h2>
+        <p class="section-subtitle">Популярные магазины с удобной доставкой и честными ценами.</p>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <div class="card-img shop">
+                <div class="icon-svg icon-shop-3">
+                    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Мяч -->
+                        <circle cx="40" cy="40" r="22" fill="white" opacity="0.9"/>
+                        <path d="M40 18C40 18 55 30 55 40C55 50 40 62 40 62" stroke="rgba(100,116,139,0.4)" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M25 30C25 30 35 35 40 40" stroke="rgba(100,116,139,0.4)" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M55 30C55 30 45 35 40 40" stroke="rgba(100,116,139,0.4)" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="card-tag">Спорттовары</span>
+                <h3 class="card-title">Спортмастер</h3>
+                <p class="card-desc">Одежда и обувь для спорта и активного отдыха. Бренды Adidas, Nike, The North Face и собственные линейки. Программа лояльности с кэшбэком баллами.</p>
+                <div class="card-footer">
+                    <span class="card-price">скидки до 50%</span>
+                    <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_SPORTMASTER" target="_blank" rel="nofollow sponsored">Перейти в магазин →</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img shop">
+                <div class="icon-svg icon-shop-4">
+                    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Сумка доставки -->
+                        <rect x="15" y="25" width="50" height="35" rx="4" fill="white" opacity="0.9"/>
+                        <path d="M25 25V20C25 17 28 15 32 15H48C52 15 55 17 55 20V25" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M40 35V50" stroke="rgba(100,116,139,0.5)" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M30 42H50" stroke="rgba(100,116,139,0.5)" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="card-body">
+                <span class="card-tag">Продукты</span>
+                <h3 class="card-title">Магнит Доставка</h3>
+                <p class="card-desc">Доставка продуктов и товаров для дома за 30 минут. Свежие продукты, быстрая оплата, акционные цены каждый день.</p>
+                <div class="card-footer">
+                    <span class="card-price">доставка от 0 ₽</span>
+                    <a class="card-btn" href="https://YOUR_AFFILIATE_LINK_MAGNIT" target="_blank" rel="nofollow sponsored">Заказать доставку →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="compare">
+    <div class="section-header">
+        <h2 class="section-title">Сравнение предложений</h2>
+        <p class="section-subtitle">Удобное сравнение ключевых показателей популярных сервисов.</p>
+    </div>
+    <div class="compare-wrapper">
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>Сервис</th>
+                    <th>Категория</th>
+                    <th>Конверсия</th>
+                    <th>Срок оплаты</th>
+                    <th>Подтверждение</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>AliExpress</strong></td>
+                    <td>Маркетплейс</td>
+                    <td><span class="stars">★★★★★</span> 4.8</td>
+                    <td>54 дня</td>
+                    <td>93.9%</td>
+                </tr>
+                <tr>
+                    <td><strong>Магнит Доставка</strong></td>
+                    <td>Еда и продукты</td>
+                    <td><span class="stars">★★★★☆</span> 4.2</td>
+                    <td>61 день</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td><strong>Фоксфорд</strong></td>
+                    <td>Онлайн-школа</td>
+                    <td><span class="stars">★★★★★</span> 4.5</td>
+                    <td>33 дня</td>
+                    <td>93.5%</td>
+                </tr>
+                <tr>
+                    <td><strong>Яндекс Бизнес</strong></td>
+                    <td>Для бизнеса</td>
+                    <td><span class="stars">★★★☆☆</span> 3.9</td>
+                    <td>53 дня</td>
+                    <td>73.5%</td>
+                </tr>
+                <tr>
+                    <td><strong>Нетология</strong></td>
+                    <td>IT-курсы</td>
+                    <td><span class="stars">★★★★★</span> 4.7</td>
+                    <td>32 дня</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td><strong>Спортмастер</strong></td>
+                    <td>Спорттовары</td>
+                    <td><span class="stars">★★★★☆</span> 4.1</td>
+                    <td>56 дней</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div class="cta-section">
+    <div class="cta-content">
+        <h2>Подписывайтесь в Telegram</h2>
+        <p>Еженедельные подборки лучших предложений, скрытые скидки и честные обзоры — всё в нашем канале.</p>
+        <a class="cta-btn" href="https://t.me/YOUR_TELEGRAM_LINK" target="_blank">Подписаться →</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Найдёмка. Все права защищены.</p>
+    <p style="margin-top: 8px;">Раскрытие информации: некоторые ссылки на сайте являются партнёрскими. Мы можем получать комиссию при оформлении заказа — это не влияет на вашу цену покупки. Подробнее — <a href="#">Политика конфиденциальности</a>.</p>
+</footer>
+
+</body>
+</html>
